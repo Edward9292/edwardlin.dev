@@ -14,7 +14,7 @@ export function Footer() {
       <div className="relative mx-auto max-w-4xl text-center">
         <SectionReveal>
           <span className="font-mono text-sm tracking-[0.3em] text-cyan/70">
-            05. CONTACT
+            06. CONTACT
           </span>
           <h2 className="mt-4 text-5xl font-bold text-white md:text-6xl">
             Let&apos;s{" "}

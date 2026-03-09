@@ -17,7 +17,7 @@ export function TimelineItem({ entry, index, side }: TimelineItemProps) {
     <div
       className={cn(
         "relative flex w-full items-start gap-8 md:w-1/2",
-        isLeft ? "md:flex-row-reverse md:pr-12 md:text-right" : "md:pl-12"
+        isLeft ? "md:flex-row-reverse md:pr-12" : "md:pl-12"
       )}
     >
       {/* Connector dot */}

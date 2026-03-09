@@ -48,7 +48,7 @@ export function Skills() {
       <div className="mx-auto max-w-6xl">
         <SectionReveal>
           <span className="font-mono text-sm tracking-[0.3em] text-cyan/70">
-            03. SKILLS
+            04. SKILLS
           </span>
           <h2 className="mt-3 text-4xl font-bold text-white md:text-5xl">
             My{" "}

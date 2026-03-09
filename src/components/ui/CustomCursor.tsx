@@ -10,11 +10,11 @@ export function CustomCursor() {
   const dotX = useSpring(0, { stiffness: 1000, damping: 40 });
   const dotY = useSpring(0, { stiffness: 1000, damping: 40 });
 
-  const ringX = useSpring(0, { stiffness: 150, damping: 20 });
-  const ringY = useSpring(0, { stiffness: 150, damping: 20 });
+  const ringX = useSpring(0, { stiffness: 1000, damping: 40 });
+  const ringY = useSpring(0, { stiffness: 1000, damping: 40 });
 
-  const glowX = useSpring(0, { stiffness: 80, damping: 15 });
-  const glowY = useSpring(0, { stiffness: 80, damping: 15 });
+  const glowX = useSpring(0, { stiffness: 1000, damping: 40 });
+  const glowY = useSpring(0, { stiffness: 1000, damping: 40 });
 
   useEffect(() => {
     setMounted(true);
