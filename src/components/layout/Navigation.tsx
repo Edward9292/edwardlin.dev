@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { cn } from "@/lib/utils";
+import { INITIALS, RESUME_URL } from "@/data/config";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -43,7 +44,7 @@ export function Navigation() {
             className="font-mono text-lg font-bold text-cyan transition-opacity hover:opacity-80"
             data-interactive
           >
-            EL<span className="text-magenta">.</span>
+            {INITIALS}<span className="text-magenta">.</span>
           </a>
         </MagneticButton>
 
@@ -68,7 +69,7 @@ export function Navigation() {
         <div className="hidden md:block">
           <MagneticButton strength={0.3}>
             <a
-              href="/resume.pdf"
+              href={RESUME_URL}
               className="rounded-lg border border-cyan/30 px-4 py-2 font-mono text-sm text-cyan transition-all hover:border-cyan/60 hover:shadow-neon-cyan"
               data-interactive
             >
@@ -110,7 +111,7 @@ export function Navigation() {
               </a>
             ))}
             <a
-              href="/resume.pdf"
+              href={RESUME_URL}
               className="mt-2 inline-block w-fit rounded-lg border border-cyan/30 px-4 py-2 font-mono text-sm text-cyan"
             >
               Resume

@@ -3,13 +3,7 @@
 import { motion } from "framer-motion";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-
-const socials = [
-  { label: "GitHub", href: "https://github.com/edwardlin", icon: "⌥" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/edwardlin", icon: "◈" },
-  { label: "Twitter / X", href: "https://twitter.com/edwardlin", icon: "◇" },
-  { label: "Email", href: "mailto:edward@edwardlin.dev", icon: "✉" },
-];
+import { SOCIALS, EMAIL, NAME } from "@/data/config";
 
 export function Footer() {
   return (
@@ -36,7 +30,7 @@ export function Footer() {
         <SectionReveal delay={0.15}>
           <MagneticButton className="mx-auto mt-10 inline-block">
             <a
-              href="mailto:edward@edwardlin.dev"
+              href={`mailto:${EMAIL}`}
               className="group inline-flex items-center gap-3 rounded-xl border border-cyan/40 bg-cyan/10 px-8 py-4 font-mono text-base text-cyan transition-all hover:border-cyan hover:bg-cyan/20 hover:shadow-neon-cyan-strong"
               data-interactive
             >
@@ -54,7 +48,7 @@ export function Footer() {
         {/* Social links */}
         <SectionReveal delay={0.2}>
           <div className="mt-16 flex flex-wrap items-center justify-center gap-6">
-            {socials.map((s) => (
+            {SOCIALS.map((s) => (
               <MagneticButton key={s.label}>
                 <a
                   href={s.href}
@@ -76,7 +70,7 @@ export function Footer() {
           <div className="mt-16 border-t border-white/5 pt-8">
             <p className="font-mono text-xs text-white/20">
               Designed & built by{" "}
-              <span className="text-cyan/50">Edward Lin</span> · {new Date().getFullYear()}
+              <span className="text-cyan/50">{NAME}</span> · {new Date().getFullYear()}
             </p>
             <p className="mt-1 font-mono text-xs text-white/10">
               Next.js · Framer Motion · Tailwind CSS · Lenis

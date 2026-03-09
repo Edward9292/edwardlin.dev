@@ -7,14 +7,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { useMousePosition } from "@/hooks/useMousePosition";
 import { useParallax } from "@/hooks/useParallax";
 import { staggerContainer, staggerItem } from "@/lib/motionVariants";
-
-const TYPING_STRINGS = [
-  "Software Engineer",
-  "Systems Builder",
-  "ML Enthusiast",
-  "Open Source Contributor",
-  "Full-Stack Developer",
-];
+import { NAME_DISPLAY, HERO_LABEL, HERO_DESCRIPTION, HERO_TYPING_STRINGS } from "@/data/config";
 
 function useTypingEffect(strings: string[], speed = 80, pause = 2000) {
   const [text, setText] = useState("");
@@ -53,7 +46,7 @@ export function Hero() {
   const layer3X = useSpring(0, { stiffness: 50, damping: 20 });
   const layer3Y = useSpring(0, { stiffness: 50, damping: 20 });
 
-  const typedText = useTypingEffect(TYPING_STRINGS);
+  const typedText = useTypingEffect(HERO_TYPING_STRINGS);
 
   useEffect(() => {
     layer3X.set(-mouse.normalizedX * 8);
@@ -103,14 +96,14 @@ export function Hero() {
           {/* Label */}
           <motion.div variants={staggerItem}>
             <span className="font-mono text-sm tracking-[0.3em] text-cyan/70">
-              HELLO, WORLD — I&apos;M
+              {HERO_LABEL}
             </span>
           </motion.div>
 
           {/* Name with glitch */}
           <motion.div variants={staggerItem}>
             <GlitchText
-              text="EDWARD LIN"
+              text={NAME_DISPLAY}
               className="text-6xl font-bold tracking-tight text-white sm:text-7xl md:text-8xl"
             />
           </motion.div>
@@ -128,8 +121,7 @@ export function Hero() {
             variants={staggerItem}
             className="mx-auto max-w-xl text-lg leading-relaxed text-white/60"
           >
-            I build performant systems, beautiful interfaces, and intelligent applications.
-            Currently studying CS at UC Berkeley.
+            {HERO_DESCRIPTION}
           </motion.p>
 
           {/* CTAs */}

@@ -5,16 +5,16 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
 import { Navigation } from "@/components/layout/Navigation";
 import LenisProvider from "./LenisProvider";
+import { SEO, NAME } from "@/data/config";
 
 export const metadata: Metadata = {
-  title: "Edward Lin — Software Engineer",
-  description:
-    "Portfolio of Edward Lin, a software engineer and CS student at UC Berkeley. Building performant systems, beautiful interfaces, and intelligent applications.",
-  keywords: ["Edward Lin", "Software Engineer", "UC Berkeley", "Portfolio", "Next.js", "TypeScript"],
-  authors: [{ name: "Edward Lin" }],
+  title: SEO.title,
+  description: SEO.description,
+  keywords: SEO.keywords,
+  authors: [{ name: NAME }],
   openGraph: {
-    title: "Edward Lin — Software Engineer",
-    description: "Portfolio of Edward Lin, software engineer & CS student",
+    title: SEO.title,
+    description: SEO.ogDescription,
     type: "website",
   },
 };

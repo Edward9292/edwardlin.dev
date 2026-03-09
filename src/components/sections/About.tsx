@@ -4,13 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { NeonBorder } from "@/components/ui/NeonBorder";
-
-const stats = [
-  { label: "Projects Built", value: 30, suffix: "+" },
-  { label: "Lines of Code", value: 500, suffix: "K+" },
-  { label: "Cups of Coffee", value: 1200, suffix: "+" },
-  { label: "Open Source PRs", value: 47, suffix: "" },
-];
+import { ABOUT_STATS, ABOUT_TERMINAL_TEXT, RESUME_URL, NAME } from "@/data/config";
 
 function CountUp({ target, suffix }: { target: number; suffix: string }) {
   const [count, setCount] = useState(0);
@@ -77,7 +71,7 @@ export function About() {
               </p>
               <div className="pt-2">
                 <a
-                  href="/resume.pdf"
+                  href={RESUME_URL}
                   className="inline-flex items-center gap-2 font-mono text-sm text-cyan hover:text-cyan/80 transition-colors"
                   data-interactive
                 >
@@ -91,7 +85,7 @@ export function About() {
           {/* Stats grid */}
           <SectionReveal delay={0.2}>
             <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat) => (
+              {ABOUT_STATS.map((stat) => (
                 <NeonBorder key={stat.label} className="p-6">
                   <div className="text-3xl font-bold text-cyan glow-cyan">
                     <CountUp target={stat.value} suffix={stat.suffix} />
@@ -112,16 +106,13 @@ export function About() {
               <div className="h-3 w-3 rounded-full bg-red-500/70" />
               <div className="h-3 w-3 rounded-full bg-yellow-500/70" />
               <div className="h-3 w-3 rounded-full bg-green-500/70" />
-              <span className="ml-2 text-white/30 text-xs">edward@portfolio ~ </span>
+              <span className="ml-2 text-white/30 text-xs">{NAME.toLowerCase().split(" ")[0]}@portfolio ~ </span>
             </div>
             <p className="text-white/50">
               <span className="text-cyan">❯</span>{" "}
               <span className="text-magenta">whoami</span>
             </p>
-            <p className="mt-1 text-white/70">
-              Edward Lin — software engineer, systems thinker, lifelong learner.
-              Always shipping, always learning.
-            </p>
+            <p className="mt-1 text-white/70">{ABOUT_TERMINAL_TEXT}</p>
           </NeonBorder>
         </SectionReveal>
       </div>
