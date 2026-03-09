@@ -1,40 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { NeonBorder } from "@/components/ui/NeonBorder";
-import { ABOUT_STATS, ABOUT_TERMINAL_TEXT, RESUME_URL, NAME } from "@/data/config";
-
-function CountUp({ target, suffix }: { target: number; suffix: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!inView) return;
-    let start = 0;
-    const duration = 1500;
-    const step = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [inView, target]);
-
-  return (
-    <span ref={ref}>
-      {count}
-      {suffix}
-    </span>
-  );
-}
+import { ABOUT_HIGHLIGHTS, ABOUT_TERMINAL_TEXT, RESUME_URL, NAME } from "@/data/config";
+import { cn } from "@/lib/utils";
 
 export function About() {
   return (
@@ -82,18 +51,24 @@ export function About() {
             </div>
           </SectionReveal>
 
-          {/* Stats grid */}
+          {/* Highlights */}
           <SectionReveal delay={0.2}>
-            <div className="grid grid-cols-2 gap-4">
-              {ABOUT_STATS.map((stat) => (
-                <NeonBorder key={stat.label} className="p-6">
-                  <div className="text-3xl font-bold text-cyan glow-cyan">
-                    <CountUp target={stat.value} suffix={stat.suffix} />
-                  </div>
-                  <div className="mt-1 font-mono text-xs text-white/40">
-                    {stat.label}
-                  </div>
-                </NeonBorder>
+            <div className="flex flex-wrap gap-3">
+              {ABOUT_HIGHLIGHTS.map((h) => (
+                <div
+                  key={h.label}
+                  className={cn(
+                    "flex items-center gap-2 rounded-lg border px-4 py-3 font-mono text-sm",
+                    h.accent === "cyan"
+                      ? "border-cyan/25 bg-cyan/5 text-white/70"
+                      : "border-magenta/25 bg-magenta/5 text-white/70"
+                  )}
+                >
+                  <span className={h.accent === "cyan" ? "text-cyan" : "text-magenta"}>
+                    {h.icon}
+                  </span>
+                  {h.label}
+                </div>
               ))}
             </div>
           </SectionReveal>
