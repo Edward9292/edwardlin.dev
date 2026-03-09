@@ -29,7 +29,7 @@ export const HERO_TYPING_STRINGS = [
 export const ABOUT_BIO = [
   `I'm a software engineer based in Toronto with a BSc in Computer Science from the <cyan>University of Toronto</cyan>. I specialize in <magenta>graphics programming</magenta> and high-performance systems — currently building a GPU-accelerated rendering engine at DAS Inc.`,
   `My experience spans low-level C++/OpenGL rendering, Java backend services at Oracle, and ML projects with PyTorch. I'm drawn to problems where raw performance matters — whether that's real-time HFT visualization, data pipeline throughput, or neural network training.`,
-  `When I'm not at a keyboard, you'll find me flying FPV freestyle quads, tinkering with amateur radio, or obsessing over mechanical keyboards.`,
+  `When I'm not at a keyboard, you'll find me flying FPV freestyle quads, tinkering with amateur radio, or chasing the perfect pour-over.`,
 ];
 
 export const ABOUT_TERMINAL_TEXT =

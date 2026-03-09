@@ -8,24 +8,24 @@ export interface Hobby {
 
 export const hobbies: Hobby[] = [
   {
-    title: "FPV Freestyle",
-    description: "Built and tuned a 5\" freestyle quad from scratch — soldering, PID tuning, and flying.",
+    title: "FPV Drone",
+    description: "I enjoy building drones. My flying skills are a work in progress.",
     image: "/hobbies/drone.jpg",
     accent: "cyan",
   },
   {
     title: "Amateur Radio",
-    description: "Licensed amateur radio operator. Built a homebrew HF transceiver kit from scratch.",
+    description: "Licensed amateur radio operator. Built a QMX HF transceiver from a kit.",
     details: [
-      { label: "Call Sign",     value: "YOUR_CALLSIGN" },
-      { label: "License Class", value: "YOUR_CLASS" },
+      { label: "Call Sign", value: "VA3EWD" },
     ],
-    image: "/hobbies/radio-station.jpg",
+    image: "/hobbies/radio.jpg",
     accent: "magenta",
   },
   {
-    title: "Mechanical Keyboards",
-    description: "Obsessive about switches, layouts, and custom builds. Currently on a 65% with tactile switches.",
+    title: "Coffee",
+    description: "Powered by code and Colombian medium roast. I like my coffee like my work: strong, precise, and balanced with just a little milk.",
+    image: "/hobbies/coffee.jpg",
     accent: "cyan",
   },
 ];
