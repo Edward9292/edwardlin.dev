@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Read(//Users/edwardlin/EdwardStuff/projects/**)",
-      "Bash(npx create-next-app@latest edwardlin.dev --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)"
-    ]
-  }
-}
