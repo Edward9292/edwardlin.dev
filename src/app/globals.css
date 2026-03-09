@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0f;
+  --cyan: #00f5ff;
+  --magenta: #ff006e;
+  --surface: #0f0f1a;
+  --border: #1a1a2e;
+  --text: #e0e0f0;
+  --text-muted: #6b7280;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyan);
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 245, 255, 0.2);
+  color: var(--cyan);
+}
+
+/* Utility classes */
+.text-cyan { color: var(--cyan); }
+.text-magenta { color: var(--magenta); }
+.bg-surface { background: var(--surface); }
+.border-neon { border-color: var(--border); }
+
+/* Glow utilities */
+.glow-cyan {
+  text-shadow: 0 0 10px #00f5ff88, 0 0 30px #00f5ff44;
+}
+.glow-magenta {
+  text-shadow: 0 0 10px #ff006e88, 0 0 30px #ff006e44;
+}
+
+/* Scanline overlay */
+.scanlines::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 245, 255, 0.03);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Noise texture */
+.noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Hex clip path */
+.clip-hex {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Grid dot background */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(0, 245, 255, 0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
