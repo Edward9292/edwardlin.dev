@@ -1,46 +1,9 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { skillGroups } from "@/data/skills";
 import { cn } from "@/lib/utils";
-
-interface SkillBarProps {
-  name: string;
-  level: number;
-  color: "cyan" | "magenta";
-  delay: number;
-}
-
-function SkillBar({ name, level, color, delay }: SkillBarProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true });
-
-  return (
-    <div ref={ref} className="space-y-1.5">
-      <div className="flex justify-between">
-        <span className="font-mono text-sm text-white/70">{name}</span>
-        <span className={cn("font-mono text-xs", color === "cyan" ? "text-cyan/60" : "text-magenta/60")}>
-          {level}%
-        </span>
-      </div>
-      <div className="h-1 rounded-full bg-white/5 overflow-hidden">
-        <motion.div
-          className={cn("h-full rounded-full", color === "cyan" ? "bg-cyan" : "bg-magenta")}
-          initial={{ width: 0 }}
-          animate={{ width: inView ? `${level}%` : 0 }}
-          transition={{ duration: 1, delay, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            boxShadow: color === "cyan"
-              ? "0 0 8px #00f5ff88"
-              : "0 0 8px #ff006e88",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
 
 export function Skills() {
   return (
@@ -56,35 +19,48 @@ export function Skills() {
           </h2>
         </SectionReveal>
 
-        <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, gi) => (
             <SectionReveal key={group.category} delay={gi * 0.06}>
-              <div className="rounded-lg border border-white/5 bg-surface p-6 space-y-4">
+              <div className="rounded-lg border border-white/5 bg-surface p-6">
                 {/* Category header */}
-                <div className="flex items-center gap-3 mb-6">
+                <div className="mb-5 flex items-center gap-3">
                   <div
                     className={cn(
                       "h-2 w-2 rounded-full",
-                      group.accentColor === "cyan" ? "bg-cyan shadow-[0_0_8px_#00f5ff]" : "bg-magenta shadow-[0_0_8px_#ff006e]"
+                      group.accentColor === "cyan"
+                        ? "bg-cyan shadow-[0_0_8px_#00f5ff]"
+                        : "bg-magenta shadow-[0_0_8px_#ff006e]"
                     )}
                   />
-                  <h3 className={cn("font-mono text-sm font-semibold uppercase tracking-widest",
-                    group.accentColor === "cyan" ? "text-cyan" : "text-magenta"
-                  )}>
+                  <h3
+                    className={cn(
+                      "font-mono text-sm font-semibold uppercase tracking-widest",
+                      group.accentColor === "cyan" ? "text-cyan" : "text-magenta"
+                    )}
+                  >
                     {group.category}
                   </h3>
                 </div>
 
-                {/* Skill bars */}
-                <div className="space-y-4">
+                {/* Skill tags */}
+                <div className="flex flex-wrap gap-2">
                   {group.skills.map((skill, si) => (
-                    <SkillBar
-                      key={skill.name}
-                      name={skill.name}
-                      level={skill.level}
-                      color={group.accentColor}
-                      delay={gi * 0.06 + si * 0.05}
-                    />
+                    <motion.span
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0.85 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.2, delay: gi * 0.06 + si * 0.04 }}
+                      className={cn(
+                        "rounded-md border px-3 py-1 font-mono text-xs transition-colors",
+                        group.accentColor === "cyan"
+                          ? "border-cyan/20 bg-cyan/5 text-white/70 hover:border-cyan/50 hover:text-cyan"
+                          : "border-magenta/20 bg-magenta/5 text-white/70 hover:border-magenta/50 hover:text-magenta"
+                      )}
+                    >
+                      {skill}
+                    </motion.span>
                   ))}
                 </div>
               </div>
