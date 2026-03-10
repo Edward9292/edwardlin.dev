@@ -3,7 +3,7 @@ export const NAME = "Edward Lin";
 export const NAME_DISPLAY = "EDWARD LIN"; // uppercase for hero glitch effect
 export const INITIALS = "EL";
 export const SCHOOL = "University of Toronto";
-export const EMAIL = "edwardlin.dev@outlook.com";
+export const EMAIL = "edwardlin9292@gmail.com";
 export const RESUME_URL = "/resume.pdf";
 
 // ─── Social Links ─────────────────────────────────────────────────────────────
