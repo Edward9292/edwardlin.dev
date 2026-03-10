@@ -1,9 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 
+// Module-level singleton so Navigation / other components can access it
+let lenisInstance: Lenis | null = null;
+export function getLenis() { return lenisInstance; }
+
 export function useLenis() {
+  const rafId = useRef<number>(0);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -11,16 +17,19 @@ export function useLenis() {
       smoothWheel: true,
     });
 
+    lenisInstance = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId.current = requestAnimationFrame(raf);
     }
 
-    const rafId = requestAnimationFrame(raf);
+    rafId.current = requestAnimationFrame(raf);
 
     return () => {
-      cancelAnimationFrame(rafId);
+      cancelAnimationFrame(rafId.current);
       lenis.destroy();
+      lenisInstance = null;
     };
   }, []);
 }

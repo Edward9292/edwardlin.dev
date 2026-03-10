@@ -16,7 +16,7 @@ export const SOCIALS = [
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 export const HERO_LABEL = "HELLO, WORLD — I'M";
 export const HERO_DESCRIPTION =
-  "I build GPU rendering systems, AI models, and full-stack products. CS graduate from the University of Toronto, currently shipping at DAS Inc.";
+  "I build GPU rendering engine, AI models, and full-stack products. CS graduate from the University of Toronto, currently shipping at DAS Inc.";
 export const HERO_TYPING_STRINGS = [
   "Software Engineer",
   "Graphics Programmer",
