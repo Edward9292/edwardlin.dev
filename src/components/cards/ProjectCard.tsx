@@ -28,7 +28,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         style={{ rotateX, rotateY }}
         onMouseMove={onMouseMove}
         onMouseLeave={onMouseLeave}
-        className="relative h-full cursor-pointer"
+        className="relative h-full"
+        onClick={() => {
+          const url = project.githubUrl ?? project.liveUrl;
+          if (url) window.open(url, "_blank", "noopener,noreferrer");
+        }}
         data-interactive
       >
         <NeonBorder
