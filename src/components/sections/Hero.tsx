@@ -42,7 +42,6 @@ function useTypingEffect(strings: string[], speed = 80, pause = 2000) {
 export function Hero() {
   const mouse = useMousePosition();
   const layer1 = useParallax(15);  // dot grid
-  const layer2 = useParallax(30);  // hex shape
   const layer3X = useSpring(0, { stiffness: 50, damping: 20 });
   const layer3Y = useSpring(0, { stiffness: 50, damping: 20 });
 
@@ -70,16 +69,6 @@ export function Hero() {
       <motion.div
         style={{ x: layer1.x, y: layer1.y }}
         className="pointer-events-none absolute inset-[-5%] dot-grid opacity-40"
-      />
-
-      {/* Floating hex shape (parallax layer 2) */}
-      <motion.div
-        style={{ x: layer2.x, y: layer2.y }}
-        className="pointer-events-none absolute right-[10%] top-[20%] h-64 w-64 animate-float opacity-20 clip-hex border border-cyan/30 bg-gradient-to-br from-cyan/10 to-transparent"
-      />
-      <motion.div
-        style={{ x: layer2.x, y: layer2.y }}
-        className="pointer-events-none absolute bottom-[15%] left-[8%] h-40 w-40 animate-[float_8s_ease-in-out_infinite_2s] opacity-10 clip-hex border border-magenta/30"
       />
 
       {/* Text block (parallax layer 3 — counter-move) */}
