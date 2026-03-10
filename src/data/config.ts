@@ -27,8 +27,8 @@ export const HERO_TYPING_STRINGS = [
 
 // ─── About Section ────────────────────────────────────────────────────────────
 export const ABOUT_BIO = [
-  `I’m currently building a GPU rendering engine from scratch for stock trading software. I enjoy tackling challenging problems and turning ideas into systems that actually work.`,
-  `I have a BSc in Computer Science from the <cyan>University of Toronto</cyan>, where I explored AI and web technologies, and I also spent a year as an intern at Oracle, gaining hands-on experience building real systems.`,
+  `I’m currently building a <cyan>GPU rendering engine</cyan> from scratch for stock trading software at <magenta>DAS Inc.</magenta> I enjoy tackling challenging problems and turning ideas into systems that actually work.`,
+  `I have a BSc in Computer Science from the <cyan>University of Toronto</cyan>, where I explored AI and web technologies, and I also spent a year as an intern at <magenta>Oracle</magenta>, gaining hands-on experience building real systems.`,
   `I love technology and building things — whether it’s experimenting with new ideas, creating systems from scratch, or finding creative ways to make things work better.`
 ];
 

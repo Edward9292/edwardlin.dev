@@ -1,9 +1,122 @@
 "use client";
 
+import { motion, useSpring } from "framer-motion";
+import { useRef, useState } from "react";
+import Image from "next/image";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { NeonBorder } from "@/components/ui/NeonBorder";
-import { ABOUT_HIGHLIGHTS, ABOUT_TERMINAL_TEXT, RESUME_URL, NAME } from "@/data/config";
-import { cn } from "@/lib/utils";
+import { ABOUT_BIO, ABOUT_TERMINAL_TEXT, RESUME_URL, NAME } from "@/data/config";
+
+function PhotoCard() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [glare, setGlare] = useState({ x: 50, y: 50, opacity: 0 });
+
+  const rotateX = useSpring(0, { stiffness: 260, damping: 28 });
+  const rotateY = useSpring(0, { stiffness: 260, damping: 28 });
+  const scale = useSpring(1, { stiffness: 260, damping: 28 });
+  const shadowY = useSpring(8, { stiffness: 260, damping: 28 });
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const nx = (e.clientX - rect.left) / rect.width;   // 0–1
+    const ny = (e.clientY - rect.top)  / rect.height;  // 0–1
+
+    rotateY.set((nx - 0.5) * 24);
+    rotateX.set((0.5 - ny) * 24);
+    scale.set(1.03);
+    shadowY.set(18);
+    setGlare({ x: nx * 100, y: ny * 100, opacity: 0.18 });
+  };
+
+  const onMouseLeave = () => {
+    rotateX.set(0);
+    rotateY.set(0);
+    scale.set(1);
+    shadowY.set(8);
+    setGlare((g) => ({ ...g, opacity: 0 }));
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        scale,
+        transformStyle: "preserve-3d",
+        perspective: 800,
+        filter: `drop-shadow(0 ${shadowY.get()}px 32px rgba(0,245,255,0.18))`,
+      }}
+      className="relative mx-auto w-64 md:w-72 select-none cursor-none"
+    >
+      {/* Animated ring */}
+      <motion.div
+        className="absolute inset-[-12px] rounded-full"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+        style={{
+          background:
+            "conic-gradient(from 0deg, transparent 60%, rgba(0,245,255,0.5) 75%, rgba(255,0,110,0.5) 85%, transparent 100%)",
+          borderRadius: "50%",
+          zIndex: 0,
+        }}
+      />
+
+      {/* Glow ring */}
+      <div
+        className="absolute inset-[-4px] rounded-full"
+        style={{
+          background: "transparent",
+          boxShadow:
+            "0 0 0 1.5px rgba(0,245,255,0.25), 0 0 24px rgba(0,245,255,0.12)",
+          borderRadius: "50%",
+          zIndex: 1,
+        }}
+      />
+
+      {/* Photo */}
+      <div
+        className="relative overflow-hidden rounded-full"
+        style={{ zIndex: 2, aspectRatio: "1/1" }}
+      >
+        <Image
+          src="/avatar.png"
+          alt={NAME}
+          fill
+          className="object-cover object-top"
+          priority
+        />
+
+        {/* Glare overlay */}
+        <div
+          className="pointer-events-none absolute inset-0 rounded-full transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(255,255,255,0.55) 0%, transparent 60%)`,
+            opacity: glare.opacity,
+          }}
+        />
+      </div>
+
+      {/* Floating cyan dot accents */}
+      {[
+        { top: "-8%", left: "10%", size: 6, delay: 0 },
+        { top: "80%", left: "-6%", size: 4, delay: 0.8 },
+        { top: "15%", left: "88%", size: 5, delay: 1.4 },
+        { top: "70%", left: "92%", size: 3, delay: 0.4 },
+      ].map((dot, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full bg-cyan"
+          style={{ width: dot.size, height: dot.size, top: dot.top, left: dot.left }}
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 3, repeat: Infinity, delay: dot.delay, ease: "easeInOut" }}
+        />
+      ))}
+    </motion.div>
+  );
+}
 
 export function About() {
   return (
@@ -19,25 +132,17 @@ export function About() {
           </h2>
         </SectionReveal>
 
-        <div className="mt-16 grid gap-12 md:grid-cols-2">
+        <div className="mt-16 grid gap-12 md:grid-cols-2 md:items-center">
           {/* Bio */}
           <SectionReveal delay={0.1}>
             <div className="space-y-5 text-white/70 leading-relaxed">
-              <p>
-                I&apos;m a software engineer and CS student at UC Berkeley, passionate about
-                building systems that scale and interfaces that delight. I thrive at the
-                intersection of <span className="text-cyan">performance</span> and{" "}
-                <span className="text-magenta">creativity</span>.
-              </p>
-              <p>
-                My interests span distributed systems, machine learning infrastructure,
-                and frontend engineering. I&apos;m drawn to hard problems — whether that&apos;s
-                consensus algorithms, real-time collaboration, or pixel-perfect animations.
-              </p>
-              <p>
-                When I&apos;m not at a keyboard, you&apos;ll find me rock climbing, reading sci-fi,
-                or obsessing over mechanical keyboards.
-              </p>
+              {ABOUT_BIO.map((para, i) => (
+                <p key={i} dangerouslySetInnerHTML={{
+                  __html: para
+                    .replace(/<cyan>(.*?)<\/cyan>/g, '<span class="text-cyan">$1</span>')
+                    .replace(/<magenta>(.*?)<\/magenta>/g, '<span class="text-magenta">$1</span>')
+                }} />
+              ))}
               <div className="pt-2">
                 <a
                   href={RESUME_URL}
@@ -51,45 +156,11 @@ export function About() {
             </div>
           </SectionReveal>
 
-          {/* Highlights */}
+          {/* Photo */}
           <SectionReveal delay={0.2}>
-            <div className="flex flex-wrap gap-3">
-              {ABOUT_HIGHLIGHTS.map((h) => (
-                <div
-                  key={h.label}
-                  className={cn(
-                    "flex items-center gap-2 rounded-lg border px-4 py-3 font-mono text-sm",
-                    h.accent === "cyan"
-                      ? "border-cyan/25 bg-cyan/5 text-white/70"
-                      : "border-magenta/25 bg-magenta/5 text-white/70"
-                  )}
-                >
-                  <span className={h.accent === "cyan" ? "text-cyan" : "text-magenta"}>
-                    {h.icon}
-                  </span>
-                  {h.label}
-                </div>
-              ))}
-            </div>
+            <PhotoCard />
           </SectionReveal>
         </div>
-
-        {/* Terminal-style fun fact */}
-        <SectionReveal delay={0.3}>
-          <NeonBorder className="mt-12 p-6 font-mono text-sm" color="magenta">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="h-3 w-3 rounded-full bg-red-500/70" />
-              <div className="h-3 w-3 rounded-full bg-yellow-500/70" />
-              <div className="h-3 w-3 rounded-full bg-green-500/70" />
-              <span className="ml-2 text-white/30 text-xs">{NAME.toLowerCase().split(" ")[0]}@portfolio ~ </span>
-            </div>
-            <p className="text-white/50">
-              <span className="text-cyan">❯</span>{" "}
-              <span className="text-magenta">whoami</span>
-            </p>
-            <p className="mt-1 text-white/70">{ABOUT_TERMINAL_TEXT}</p>
-          </NeonBorder>
-        </SectionReveal>
       </div>
     </section>
   );
