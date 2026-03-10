@@ -59,8 +59,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 "rounded-full px-2 py-0.5 font-mono text-xs",
                 project.category === "ml"
                   ? "bg-magenta/10 text-magenta"
-                  : project.category === "systems"
-                  ? "bg-magenta/10 text-magenta"
                   : "bg-cyan/10 text-cyan"
               )}
             >
