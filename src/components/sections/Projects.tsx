@@ -7,13 +7,13 @@ import { ProjectCard } from "@/components/cards/ProjectCard";
 import { projects } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
-type Filter = "all" | "web" | "ml" | "systems" | "other";
+type Filter = "all" | "web" | "mobile" | "ml" | "other";
 
 const filters: { label: string; value: Filter }[] = [
   { label: "All", value: "all" },
-  { label: "Web", value: "web" },
-  { label: "ML / AI", value: "ml" },
-  { label: "Systems", value: "systems" },
+  { label: "Web App", value: "web" },
+  { label: "Mobile App", value: "mobile" },
+  { label: "AI / ML", value: "ml" },
 ];
 
 export function Projects() {
@@ -21,6 +21,10 @@ export function Projects() {
 
   const filtered = projects.filter(
     (p) => activeFilter === "all" || p.category === activeFilter
+  );
+
+  const visibleFilters = filters.filter(
+    (f) => f.value === "all" || projects.some((p) => p.category === f.value)
   );
 
   return (
@@ -39,7 +43,7 @@ export function Projects() {
         {/* Filter tabs */}
         <SectionReveal delay={0.1}>
           <div className="mt-10 flex flex-wrap gap-3">
-            {filters.map((f) => (
+            {visibleFilters.map((f) => (
               <button
                 key={f.value}
                 onClick={() => setActiveFilter(f.value)}

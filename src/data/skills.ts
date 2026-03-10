@@ -1,10 +1,10 @@
 export type SkillCategory =
-  | "Languages"
-  | "Frontend"
-  | "Backend & Tools"
-  | "ML / AI"
-  | "Graphics & GPU"
-  | "Infrastructure";
+  | "Programming Languages"
+  | "Full Stack Development"
+  | "Tools & AI Agents"
+  | "AI, ML & Data Science"
+  | "Graphics Programming";
+  // | "Infrastructure";
 
 export interface SkillGroup {
   category: SkillCategory;
@@ -14,33 +14,33 @@ export interface SkillGroup {
 
 export const skillGroups: SkillGroup[] = [
   {
-    category: "Languages",
+    category: "Programming Languages",
     accentColor: "cyan",
-    skills: ["C++", "Java", "Python", "JavaScript", "C", "R", "Shell Scripting"],
+    // Core syntax and logic foundations
+    skills: ["C++", "C", "Java", "Python", "JavaScript", "SQL", "Shell Scripting"],
   },
   {
-    category: "Graphics & GPU",
+    category: "Full Stack Development",
     accentColor: "cyan",
-    skills: ["OpenGL", "GLSL", "RenderDoc", "OpenMP"],
+    // Bridging frontend and backend capabilities
+    skills: ["React.js", "React Native", "Node.js", "Spring Framework", "Django"],
   },
   {
-    category: "Backend & Tools",
+    category: "Graphics Programming",
     accentColor: "magenta",
-    skills: ["Spring Framework", "Node.js", "Django", "SQL", "Git", "JUnit"],
+    // Specialized high-performance rendering
+    skills: ["OpenGL", "GLSL", "RenderDoc"],
   },
   {
-    category: "Frontend",
+    category: "AI, ML & Data Science",
+    accentColor: "magenta",
+    // Machine learning frameworks and statistical computing
+    skills: ["PyTorch", "TensorFlow", "OpenCV", "NumPy", "R"],
+  },
+  {
+    category: "Tools & AI Agents",
     accentColor: "cyan",
-    skills: ["React.js", "React Native", "Next.js", "Tailwind CSS"],
+    // Modern developer workflow and quality assurance
+    skills: ["Git", "GitHub Copilot", "Claude Code", "JUnit"],
   },
-  {
-    category: "ML / AI",
-    accentColor: "magenta",
-    skills: ["PyTorch", "TensorFlow", "OpenCV", "NumPy"],
-  },
-  {
-    category: "Infrastructure",
-    accentColor: "magenta",
-    skills: ["AWS", "Docker", "Linux"],
-  },
-];
+]

@@ -21,11 +21,10 @@ export const timelineEntries: TimelineEntry[] = [
     startDate: "Nov 2023",
     endDate: "Present",
     description: [
-      "Built a GPU-accelerated rendering engine from scratch (C++, OpenGL, GLSL), replacing a 20-year-old CPU system — 15× faster, 42% less CPU usage.",
-      "Added multi-GPU + multi-threaded rendering for real-time visualization of multiple HFT charts simultaneously.",
-      "Optimized stock data pipeline to 130K+ updates/sec with 26% lower latency.",
+      "Built a custom GPU rendering engine from scratch, replacing a 20-year-old CPU system — 15× faster, 42% less CPU usage.",
+      "Added multi-GPU + multi-threaded rendering for real-time visualization of multiple trading charts simultaneously."
     ],
-    techStack: ["C++", "OpenGL", "GLSL", "RenderDoc", "OpenMP"],
+    techStack: ["C++", "OpenGL", "GLSL"],
     accentColor: "cyan",
   },
   {
@@ -37,10 +36,10 @@ export const timelineEntries: TimelineEntry[] = [
     startDate: "May 2021",
     endDate: "Apr 2022",
     description: [
+      "Implemented backend features for Oracle Responsys on a Spring Framework + Java stack.",
       "Fixed 12+ high-priority bugs and increased unit test coverage by 15% with JUnit.",
-      "Optimized filtering algorithm and data handling for a 23% speed increase on large datasets.",
     ],
-    techStack: ["Java", "Spring Framework", "JUnit", "SQL"],
+    techStack: ["Java", "Spring Framework", "JUnit"],
     accentColor: "cyan",
   },
   {
@@ -53,8 +52,7 @@ export const timelineEntries: TimelineEntry[] = [
     endDate: "Nov 2023",
     description: [
       "Majored in CS with a Statistics minor.",
-      "Focus in Artificial Intelligence.",
-      "Focus in Web and Internet Technologies.",
+      "Focus in Artificial Intelligence and Web & Internet Technologies.",
     ],
     accentColor: "magenta",
   },
