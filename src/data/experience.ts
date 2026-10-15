@@ -13,19 +13,32 @@ export interface TimelineEntry {
 
 export const timelineEntries: TimelineEntry[] = [
   {
+    id: "google-tpu-swe",
+    type: "work",
+    title: "Software Engineer",
+    organization: "Google — TPU ASIC-SW",
+    startDate: "Sept 2026",
+    endDate: "Present",
+    description: [
+      "Building software for Google's TPU (Tensor Processing Unit) ASIC software stack.",
+    ],
+    techStack: ["C++"],
+    accentColor: "cyan",
+  },
+  {
     id: "das-swe",
     type: "work",
     title: "Software Engineer",
     organization: "DAS Inc — Developer of DAS Trader",
     location: "Markham, Ontario, Canada",
     startDate: "Nov 2023",
-    endDate: "Present",
+    endDate: "Aug 2026",
     description: [
       "Built a custom GPU rendering engine from scratch, replacing a 20-year-old CPU system — 15× faster, 42% less CPU usage.",
       "Added multi-GPU + multi-threaded rendering for real-time visualization of multiple trading charts simultaneously."
     ],
     techStack: ["C++", "OpenGL", "GLSL"],
-    accentColor: "cyan",
+    accentColor: "magenta",
   },
   {
     id: "oracle-intern",
