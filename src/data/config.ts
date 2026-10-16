@@ -37,7 +37,6 @@ export const ABOUT_TERMINAL_TEXT =
 
 export const ABOUT_HIGHLIGHTS = [
   { label: "3+ Yrs Experience",    icon: "◆", accent: "cyan" },
-  { label: "AWS Certified",         icon: "☁", accent: "cyan" },
   { label: "University of Toronto", icon: "◇", accent: "magenta" },
   { label: "Open to Relocate",      icon: "◈", accent: "magenta" },
 ] as const;

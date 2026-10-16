@@ -1,0 +1,117 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[top=0.4in,bottom=0.4in,left=0.5in,right=0.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{textcomp}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\linespread{0.95}
+
+% Section headings: bold, small-caps-ish, with a rule underneath
+\titleformat{\section}{\normalsize\bfseries}{}{0pt}{}[\vspace{-0.6em}\rule{\textwidth}{0.6pt}]
+\titlespacing{\section}{0pt}{0.4em}{0.15em}
+
+% Tight bullet lists
+\setlist[itemize]{leftmargin=1.1em,itemsep=0pt,parsep=0pt,topsep=0.08em}
+
+% Role heading: title (bold) left, dates right; org left, location right
+\newcommand{\role}[4]{%
+  \textbf{#1}\hfill #2\\
+  \textit{#3}\hfill \textit{#4}\\[0.1em]
+}
+
+\begin{document}
+
+%% ─── Header ───────────────────────────────────────────────────────────────
+\begin{center}
+  {\LARGE\bfseries Edward Lin}\\[0.3em]
+  +1 (647) 996-5538 $|$ Toronto, Ontario, Canada $|$ Currently in Taipei, Taiwan\\[0.25em]
+  \href{mailto:edwardlin.dev@outlook.com}{edwardlin.dev@outlook.com} $|$
+  \href{https://github.com/Edward9292}{github.com/Edward9292} $|$
+  \href{https://www.linkedin.com/in/edwardlindev/}{linkedin.com/in/edwardlindev}
+\end{center}
+
+%% ─── Experience ───────────────────────────────────────────────────────────
+\section*{Professional Experience}
+
+\role{Software Engineer}{Sept 2026 -- Present}{Google -- Cloud AI, Accelerator Software (ASIC-SW)}{Taipei, Taiwan (Hybrid)}
+\begin{itemize}
+  \item Develop the C++ golden reference model (GRM) for Google's Tensor Processing Unit (TPU) AI
+        accelerators, a functional software simulator of the hardware used as the reference for
+        validating silicon behavior.
+  \item Work across the accelerator software toolchain supporting TPU architecture and verification teams.
+\end{itemize}
+
+\vspace{0.25em}
+\role{Software Engineer}{Nov 2023 -- Aug 2026}{DAS Inc. -- Developer of DAS Trader}{Markham, Ontario, Canada}
+\begin{itemize}
+  \item Independently designed and built a GPU-accelerated rendering engine from scratch using C++, OpenGL,
+        and GLSL, replacing a 20-year-old CPU-based system, achieving a 15$\times$ increase in rendering
+        speed, 42\% reduction in CPU utilization, and enabling real-time visualization of high-frequency
+        trading data.
+  \item Leveraged RenderDoc for frame capture, shader debugging, and GPU performance analysis, identifying
+        bottlenecks and optimizing render passes for maximum efficiency.
+  \item Developed multi-GPU support with efficient context management, ensuring low-latency rendering across
+        multiple GPUs and monitors for enhanced scalability.
+  \item Introduced multi-threaded and parallel rendering from the ground up, enabling simultaneous real-time
+        rendering of multiple stock charts with consistent frame rates under heavy data loads.
+  \item Optimized real-time stock data processing by designing preprocessing logic from scratch, achieving
+        130K+ updates per second and reducing end-to-end latency by 26\%.
+  \item Collaborated directly with users to translate real-world workflow feedback into visualization and
+        usability improvements.
+\end{itemize}
+
+\vspace{0.25em}
+\role{Software Engineer Intern}{May 2021 -- Apr 2022}{Oracle Corporation}{Toronto, Ontario, Canada}
+\begin{itemize}
+  \item Contributed to the backend development of Oracle Responsys, working closely with the team on a
+        large-scale codebase that powers a leading cross-channel marketing automation platform.
+  \item Developed and optimized Java-based microservices using the Spring Framework, collaborating on 6+ new
+        features that improved the efficiency of filtering millions of emails and SMS messages.
+  \item Improved the data filtering algorithm and restructured data handling in existing code, reducing
+        processing bottlenecks and achieving a 23\% speed increase for large dataset operations.
+  \item Enhanced backend server reliability by increasing unit test coverage by 15\%, using JUnit to improve
+        code maintainability and minimize regression issues.
+  \item Resolved 12+ high-priority bugs that caused filtering algorithms to perform unexpectedly and slow
+        with large datasets, improving backend reliability and optimizing system performance.
+\end{itemize}
+
+%% ─── Skills ───────────────────────────────────────────────────────────────
+\section*{Skills}
+\textbf{Programming Languages:} C++, C, Java, Python, JavaScript, R, Shell Scripting\\
+\textbf{Frameworks \& Libraries:} React Native, React.js, Node.js, Django, PyTorch, TensorFlow, OpenCV, OpenMP\\
+\textbf{Graphics \& GPU Computing:} OpenGL, GLSL, RenderDoc\\
+\textbf{Tools \& Databases:} Git, SQL, JUnit
+
+%% ─── Education ────────────────────────────────────────────────────────────
+\section*{Education}
+\textbf{University of Toronto}\hfill Toronto, Ontario, Canada\\
+\textit{Honours Bachelor of Science in Computer Science with a Statistical Minor}\hfill \textit{Sept 2018 -- Nov 2023}
+\begin{itemize}
+  \item Associate Programs: Focus in Artificial Intelligence, Focus in Web and Internet Technologies
+\end{itemize}
+
+%% ─── Projects ─────────────────────────────────────────────────────────────
+\section*{Projects}
+\textbf{Ontario Parks $|$ Mobile Application}\hfill
+\href{https://github.com/Edward9292/ontario-parks-app}{github.com/Edward9292/ontario-parks-app}
+\begin{itemize}
+  \item Collaborated with Ontario Parks to design and develop a mobile audio-tour app using React Native and Node.js.
+  \item Implemented user authentication, cross-device data synchronization, and Google Maps API integration
+        with real-time location tracking for context-aware audio content delivery.
+\end{itemize}
+
+\vspace{0.2em}
+\textbf{CartoonGAN $|$ Machine Learning}\hfill
+\href{https://github.com/Edward9292/CartoonGAN/blob/main/report.pdf}{github.com/Edward9292/CartoonGAN}
+\begin{itemize}
+  \item Developed a Generative Adversarial Network (GAN) using Python, PyTorch, OpenCV, and NumPy to
+        transform real images into cartoon-style visuals.
+  \item Fine-tuned the GAN architecture and hyperparameters, reducing training time by 18\% while
+        maintaining high visual quality in generated images.
+\end{itemize}
+
+\end{document}
